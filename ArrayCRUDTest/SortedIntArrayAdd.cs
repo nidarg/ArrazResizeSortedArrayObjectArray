@@ -50,8 +50,8 @@ namespace ArrayCRUDTest
             sut.Add(2);
             sut.Add(3);
             sut.Add(1);
-            Assert.Equal(2, sut[1]);
-            Assert.Equal(3, sut.Count);
+            Assert.Equal(1, sut[1]);
+            Assert.Equal(4, sut.Count);
         }
     }
     

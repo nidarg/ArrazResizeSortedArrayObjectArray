@@ -89,9 +89,9 @@ namespace ArrayCRUD
 
         private void ShiftRight(int index)
         {
-            for (int i = index; i < arr.Length - 1; i++)
+            for (int i = arr.Length - 1; i > index; i--)
             {
-                arr[i + 1] = arr[i];
+                arr[i] = arr[i - 1];
             }
         }
     }

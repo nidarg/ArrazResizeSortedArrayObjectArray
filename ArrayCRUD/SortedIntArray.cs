@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ArrayCRUD
+﻿namespace ArrayCRUD
 {
     public class SortedIntArray : IntArray
     {
@@ -14,7 +10,7 @@ namespace ArrayCRUD
         {
             get => base[index];
             set
-                {
+            {
                 if (!VerifyIfSortedAtInsertAndSetElement(index, value))
                 {
                     return;
@@ -50,23 +46,37 @@ namespace ArrayCRUD
             {
                 base.Add(element);
             }
+            else if (VerifyIfSortedAtAdd(element))
+            {
+                base.Add(element);
+            }
             else
             {
-                if (VerifyIfSortedAtAdd(element))
-                {
-                    base.Add(element);
-                }
+                base.Insert(FindRightPosition(element), element);
             }
         }
 
         public override void Insert(int index, int element)
-            {
+        {
             if (!VerifyIfSortedAtInsertAndSetElement(index, element))
             {
                 return;
             }
 
             base.Insert(index, element);
+        }
+
+        private int FindRightPosition(int element)
+        {
+            for (int i = 0; i < Count; i++)
+            {
+                if (element <= base[i])
+                {
+                    return i;
+                }
+            }
+
+            return Count + 1;
         }
     }
 }
